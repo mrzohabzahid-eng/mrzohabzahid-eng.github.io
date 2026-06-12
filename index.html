@@ -5,563 +5,787 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Muhammad Zohaib — Senior SEO Specialist</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --cream:#f7f3ed;--cream2:#ede8df;--white:#fff;
-  --dark:#0f0f1a;--dark2:#1a1a2e;
-  --orange:#ff6b2b;--orange2:#ff8c42;
-  --purple:#7c3aed;--blue:#2563eb;--green:#059669;
-  --text:#1a1a2e;--muted:#6b7280;
-}
-html{scroll-behavior:smooth}
-body{background:var(--cream);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;cursor:none}
+  :root{
+    --bg: #0a0a16;
+    --bg-soft: #100f1f;
+    --surface: #181830;
+    --surface-2: #1f1f3c;
+    --text: #f4f2ff;
+    --muted: #9d9ac6;
+    --lime: #d8ff3e;
+    --magenta: #ff3fae;
+    --cyan: #3fe3ff;
+    --orange: #ff9a4d;
+    --border: rgba(255,255,255,0.09);
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
 
-/* ══ CURSOR ══ */
-#cur{position:fixed;width:10px;height:10px;background:var(--orange);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:multiply}
-#cur2{position:fixed;width:36px;height:36px;border:1.5px solid rgba(255,107,43,.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%)}
-body.hl #cur{width:18px;height:18px}
-body.hl #cur2{width:60px;height:60px;border-color:rgba(255,107,43,.85)}
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    overflow-x:hidden;
+    line-height:1.6;
+  }
+  ::selection{ background:var(--lime); color:#0a0a16; }
 
-/* ══ LOADER ══ */
-#loader{position:fixed;inset:0;z-index:9999;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transition:opacity .8s,visibility .8s}
-#loader.gone{opacity:0;visibility:hidden}
-.ld-name{font-family:'Space Grotesk',sans-serif;font-size:clamp(40px,8vw,80px);font-weight:800;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.2);letter-spacing:-3px}
-.ld-name span{color:var(--orange);-webkit-text-stroke:0}
-.ld-bar{width:200px;height:2px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden}
-.ld-fill{height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--orange2));border-radius:99px;animation:ld-go 1.4s cubic-bezier(.4,0,.2,1) forwards}
-@keyframes ld-go{to{width:100%}}
-.ld-text{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);animation:pulse .1.5s ease infinite}
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
 
-/* ══ NAV ══ */
-.nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:18px 6%;transition:all .4s}
-.nav.scrolled{background:rgba(247,243,237,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.06);padding:14px 6%}
-.nav-logo{width:46px;height:46px;background:var(--orange);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:18px;color:#fff;text-decoration:none;transition:transform .3s,box-shadow .3s;box-shadow:0 4px 16px rgba(255,107,43,.3)}
-.nav-logo:hover{transform:rotate(15deg) scale(1.1);box-shadow:0 8px 28px rgba(255,107,43,.45)}
-.nav-links{display:flex;gap:8px}
-.nav-link{padding:9px 18px;border-radius:99px;font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;transition:all .25s}
-.nav-link:hover{color:var(--text);background:rgba(0,0,0,.05)}
-.nav-cta{padding:9px 20px;background:var(--orange);color:#fff;border-radius:99px;font-size:13px;font-weight:600;text-decoration:none;transition:all .3s;box-shadow:0 4px 14px rgba(255,107,43,.3)}
-.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,107,43,.45)}
+  /* ---------- background ambience ---------- */
+  .grain{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(255,63,174,0.10), transparent 40%),
+      radial-gradient(circle at 80% 10%, rgba(63,227,255,0.10), transparent 40%),
+      radial-gradient(circle at 50% 90%, rgba(216,255,62,0.07), transparent 45%);
+  }
+  .cursor-glow{
+    position:fixed; top:0; left:0; width:420px; height:420px;
+    border-radius:50%; pointer-events:none; z-index:1;
+    background: radial-gradient(circle, rgba(216,255,62,0.10), transparent 65%);
+    transform: translate(-50%,-50%);
+    transition: opacity .3s;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .cursor-glow{ display:none; }
+  }
 
-/* ══ HERO ══ */
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:100px 6% 60px;gap:60px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(255,107,43,.08),transparent 65%);pointer-events:none}
+  /* ---------- layout helpers ---------- */
+  section{ position:relative; z-index:2; padding:120px 6vw; }
+  .section-eyebrow{
+    font-family:var(--font-mono); font-size:0.8rem; letter-spacing:0.18em;
+    text-transform:uppercase; color:var(--lime); margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .section-eyebrow::before{
+    content:''; display:inline-block; width:26px; height:2px; background:var(--lime);
+  }
+  .section-title{
+    font-family:var(--font-display); font-weight:700;
+    font-size:clamp(2.2rem, 5vw, 3.6rem); line-height:1.05; letter-spacing:-0.01em;
+  }
+  .section-sub{ color:var(--muted); max-width:560px; margin-top:18px; font-size:1.05rem; }
 
-/* animated blob */
-.hero-blob{position:absolute;bottom:-100px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(124,58,237,.05),transparent 65%);animation:blob-drift 12s ease-in-out infinite;pointer-events:none}
-@keyframes blob-drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.08)}}
+  /* reveal-on-scroll */
+  .reveal{ opacity:0; transform:translateY(36px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
 
-.hero-left{position:relative;z-index:1}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:99px;padding:8px 16px;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:28px;box-shadow:0 2px 12px rgba(0,0,0,.06);animation:badge-in .8s cubic-bezier(.16,1,.3,1) forwards;opacity:0;animation-delay:.3s}
-.hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:dot-pulse 2s ease infinite}
-@keyframes dot-pulse{0%,100%{box-shadow:0 0 0 0 rgba(5,150,105,.4)}50%{box-shadow:0 0 0 5px rgba(5,150,105,0)}}
-@keyframes badge-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  /* ---------- nav ---------- */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:24px 6vw; backdrop-filter: blur(14px);
+    background:linear-gradient(to bottom, rgba(10,10,22,0.65), rgba(10,10,22,0));
+  }
+  .nav__logo{
+    font-family:var(--font-display); font-weight:700; font-size:1.4rem;
+    display:flex; align-items:center; gap:4px;
+  }
+  .nav__logo span{ color:var(--lime); }
+  .nav__links{ display:flex; gap:36px; font-family:var(--font-mono); font-size:0.85rem; letter-spacing:0.05em; }
+  .nav__links a{ position:relative; color:var(--muted); transition:color .25s; text-transform:uppercase; }
+  .nav__links a::after{
+    content:''; position:absolute; left:0; bottom:-6px; width:0; height:2px;
+    background:var(--lime); transition:width .25s;
+  }
+  .nav__links a:hover{ color:var(--text); }
+  .nav__links a:hover::after{ width:100%; }
+  .nav__toggle{ display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; }
+  .nav__toggle span{ width:24px; height:2px; background:var(--text); border-radius:2px; }
 
-h1.hero-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(44px,6vw,76px);font-weight:800;line-height:1.02;letter-spacing:-2.5px;color:var(--dark);overflow:hidden}
-.h1-line{display:block;transform:translateY(100%);opacity:0;animation:line-up .9s cubic-bezier(.16,1,.3,1) forwards}
-.h1-line:nth-child(1){animation-delay:.5s}
-.h1-line:nth-child(2){animation-delay:.65s}
-.h1-line:nth-child(3){animation-delay:.8s}
-.orange-word{color:var(--orange)}
-@keyframes line-up{to{transform:none;opacity:1}}
+  @media (max-width: 860px){
+    .nav__links{
+      position:fixed; inset:0 0 0 auto; height:100vh; width:70vw; max-width:320px;
+      background:var(--bg-soft); flex-direction:column; justify-content:center;
+      align-items:flex-start; gap:28px; padding:0 40px; transform:translateX(100%);
+      transition:transform .4s ease; border-left:1px solid var(--border);
+    }
+    .nav__links.open{ transform:translateX(0); }
+    .nav__toggle{ display:flex; z-index:60; }
+  }
 
-.hero-role{font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.8vw,20px);color:var(--muted);margin-top:14px;min-height:1.5em;opacity:0;animation:fade-up .8s .95s forwards}
-#tw{color:var(--orange);font-weight:500}
-.tc{display:inline-block;width:2px;height:.85em;background:var(--orange);vertical-align:middle;margin-left:2px;animation:blink .9s step-end infinite}
-@keyframes blink{50%{opacity:0}}
-@keyframes fade-up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  /* ---------- hero ---------- */
+  .hero{
+    min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+    position:relative; overflow:hidden; padding:0 6vw;
+  }
+  .hero__bg{
+    position:absolute; inset:0; z-index:-1;
+    background:
+      linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+  }
+  .hero__bg::before{
+    content:''; position:absolute; top:-20%; left:50%; width:140%; height:140%;
+    transform:translateX(-50%);
+    background: radial-gradient(ellipse at center, rgba(255,63,174,0.14), transparent 55%);
+    filter:blur(40px);
+  }
 
-.hero-desc{font-size:16px;color:var(--muted);line-height:1.8;max-width:460px;margin-top:20px;opacity:0;animation:fade-up .8s 1.1s forwards}
+  .hero__eyebrow{
+    font-family:var(--font-mono); color:var(--cyan); letter-spacing:0.2em;
+    text-transform:uppercase; font-size:0.85rem; margin-bottom:20px;
+  }
+  .hero__title{
+    font-family:var(--font-display); font-weight:700;
+    font-size:clamp(3.2rem, 11vw, 7.5rem); line-height:0.98; letter-spacing:-0.02em;
+  }
+  .hero__title span{
+    background:linear-gradient(100deg, var(--lime), var(--cyan) 60%, var(--magenta));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero__role{
+    margin-top:24px; font-size:clamp(1.05rem, 2vw, 1.4rem); color:var(--muted);
+    max-width:620px; font-weight:500;
+  }
+  .hero__role strong{ color:var(--text); font-weight:600; }
+  .hero__cta{ display:flex; gap:18px; margin-top:42px; flex-wrap:wrap; }
+  .btn{
+    font-family:var(--font-mono); font-size:0.85rem; letter-spacing:0.08em;
+    text-transform:uppercase; padding:16px 30px; border-radius:999px;
+    border:1px solid var(--border); transition:transform .25s, background .25s, color .25s, border-color .25s;
+    display:inline-flex; align-items:center; gap:10px;
+  }
+  .btn--primary{ background:var(--lime); color:#0a0a16; border-color:var(--lime); font-weight:700; }
+  .btn--primary:hover{ transform:translateY(-3px) rotate(-1deg); box-shadow:0 10px 30px rgba(216,255,62,0.25); }
+  .btn--ghost{ color:var(--text); }
+  .btn--ghost:hover{ border-color:var(--cyan); color:var(--cyan); transform:translateY(-3px) rotate(1deg); }
 
-.hero-btns{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;opacity:0;animation:fade-up .8s 1.25s forwards}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--orange);color:#fff;font-weight:600;font-size:14px;border-radius:50px;text-decoration:none;transition:all .3s;box-shadow:0 6px 20px rgba(255,107,43,.35);position:relative;overflow:hidden}
-.btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);opacity:0;transition:opacity .3s}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(255,107,43,.5)}
-.btn-primary:hover::after{opacity:1}
-.btn-arr{display:inline-flex;width:26px;height:26px;background:rgba(255,255,255,.22);border-radius:50%;align-items:center;justify-content:center;transition:transform .3s}
-.btn-primary:hover .btn-arr{transform:translateX(3px)}
-.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border:1.5px solid rgba(0,0,0,.12);color:var(--text);font-weight:500;font-size:14px;border-radius:50px;text-decoration:none;transition:all .3s}
-.btn-ghost:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-3px)}
+  /* floating tool badges */
+  .hero__floaters{ position:absolute; inset:0; z-index:1; pointer-events:none; }
+  .floater{
+    position:absolute; display:flex; align-items:center; gap:10px;
+    padding:10px 16px 10px 10px; border-radius:999px;
+    background:rgba(255,255,255,0.045); border:1px solid var(--border);
+    backdrop-filter:blur(10px); font-family:var(--font-mono); font-size:0.78rem;
+    letter-spacing:0.04em; color:var(--text); white-space:nowrap;
+    animation: float 7s ease-in-out infinite;
+    transition: transform .15s ease-out;
+  }
+  .floater__icon{
+    width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-weight:700; font-size:0.8rem; color:#0a0a16; flex-shrink:0;
+  }
+  .floater--ahrefs{ top:14%; left:6%; }
+  .floater--ahrefs .floater__icon{ background:var(--orange); }
+  .floater--moz{ top:22%; right:8%; animation-delay:1.2s; }
+  .floater--moz .floater__icon{ background:var(--cyan); }
+  .floater--semrush{ top:62%; left:4%; animation-delay:2.4s; }
+  .floater--semrush .floater__icon{ background:var(--magenta); }
+  .floater--ga4{ top:70%; right:10%; animation-delay:0.6s; }
+  .floater--ga4 .floater__icon{ background:var(--lime); }
+  .floater--gtm{ top:42%; left:50%; animation-delay:3.4s; }
+  .floater--gtm .floater__icon{ background:#bda7ff; }
 
-.hero-stats{display:flex;gap:36px;margin-top:48px;padding-top:40px;border-top:1px solid rgba(0,0,0,.08);opacity:0;animation:fade-up .8s 1.4s forwards}
-.hs-num{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:800;color:var(--dark);line-height:1}
-.hs-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+  @keyframes float{
+    0%, 100%{ transform: translateY(0px) rotate(-2deg); }
+    50%{ transform: translateY(-22px) rotate(2deg); }
+  }
+  @media (prefers-reduced-motion: reduce){ .floater{ animation:none; } }
 
-/* hero right - animated SVG illustration */
-.hero-right{position:relative;display:flex;align-items:center;justify-content:center;opacity:0;animation:fade-up 1s 1s forwards}
-.hero-svg-wrap{position:relative;width:100%;max-width:500px}
-.hero-svg-wrap svg{width:100%;height:auto;filter:drop-shadow(0 30px 60px rgba(0,0,0,.12))}
+  @media (max-width: 860px){
+    .hero__floaters{ opacity:0.55; }
+    .floater{ font-size:0.68rem; padding:8px 12px 8px 8px; }
+    .floater--gtm{ display:none; }
+  }
 
-/* floating cards around illustration */
-.float-card{position:absolute;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:0 8px 32px rgba(0,0,0,.12);display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500;white-space:nowrap}
-.fc1{top:10%;right:-5%;animation:float1 4s ease-in-out infinite}
-.fc2{bottom:15%;left:-8%;animation:float2 5s ease-in-out infinite}
-.fc3{top:50%;right:-10%;animation:float3 3.5s ease-in-out infinite}
-@keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-@keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
-@keyframes float3{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
-.fc-icon{font-size:20px}
-.fc-val{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--dark)}
-.fc-sub{font-size:11px;color:var(--muted)}
+  /* SERP rank badge — flipping 3D coin */
+  .hero__serp{
+    position:absolute; right:7vw; bottom:14vh; perspective:800px; z-index:1;
+  }
+  .serp-badge{
+    width:120px; height:120px; position:relative;
+    transform-style:preserve-3d;
+    animation: spin 9s linear infinite;
+  }
+  @keyframes spin{ from{ transform:rotateY(0); } to{ transform:rotateY(360deg); } }
+  .serp-badge__face{
+    position:absolute; inset:0; border-radius:50%;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    backface-visibility:hidden; font-family:var(--font-display); font-weight:700;
+    box-shadow:0 20px 50px rgba(0,0,0,0.4);
+  }
+  .serp-badge__face--front{
+    background:linear-gradient(135deg, var(--lime), #a8e600);
+    color:#0a0a16; font-size:2rem;
+  }
+  .serp-badge__face--front small{ font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.2em; margin-top:4px; }
+  .serp-badge__face--back{
+    background:linear-gradient(135deg, var(--magenta), #b3217e);
+    color:#fff; font-size:1rem; font-family:var(--font-mono); letter-spacing:0.1em;
+    transform: rotateY(180deg);
+  }
+  @media (max-width: 860px){ .hero__serp{ display:none; } }
+  @media (prefers-reduced-motion: reduce){ .serp-badge{ animation:none; } }
 
-/* scroll mouse */
-.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fade-up 1s 2s forwards}
-.mouse{width:22px;height:34px;border:2px solid rgba(0,0,0,.2);border-radius:11px;display:flex;justify-content:center;padding-top:5px}
-.mouse-dot{width:3px;height:7px;background:var(--orange);border-radius:2px;animation:mouse-scroll 1.6s ease infinite}
-@keyframes mouse-scroll{0%,100%{opacity:1;transform:translateY(0)}50%{opacity:.3;transform:translateY(7px)}}
-.scroll-hint span{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+  .hero__scroll{
+    position:absolute; bottom:5vh; left:6vw; font-family:var(--font-mono);
+    font-size:0.75rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--muted);
+    display:flex; align-items:center; gap:12px;
+  }
+  .hero__scroll span{
+    width:1px; height:40px; background:linear-gradient(var(--lime), transparent);
+    animation: pulse-line 2s ease-in-out infinite;
+  }
+  @keyframes pulse-line{ 0%,100%{ opacity:0.3; } 50%{ opacity:1; } }
 
-/* ══ MARQUEE ══ */
-.mq{overflow:hidden;background:var(--orange);padding:15px 0;position:relative;z-index:2}
-.mq-track{display:flex;width:max-content;animation:mq-go 28s linear infinite}
-.mq-track:hover{animation-play-state:paused}
-.mq-item{padding:0 28px;font-size:12px;font-weight:600;color:rgba(255,255,255,.85);text-transform:uppercase;letter-spacing:1.5px;white-space:nowrap;display:inline-flex;align-items:center;gap:10px;transition:color .2s}
-.mq-item:hover{color:#fff}
-.mq-sep{color:rgba(255,255,255,.35);font-size:16px}
-@keyframes mq-go{to{transform:translateX(-50%)}}
+  /* ---------- about ---------- */
+  .about__inner{ max-width:1100px; margin:0 auto; }
+  .about__text{ margin-top:28px; max-width:680px; font-size:1.1rem; color:var(--muted); }
+  .about__text strong{ color:var(--text); }
+  .about__stats{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
+    gap:24px; margin-top:60px;
+  }
+  .stat{
+    border:1px solid var(--border); border-radius:18px; padding:28px 22px;
+    background:linear-gradient(160deg, rgba(255,255,255,0.04), transparent);
+    transition: transform .3s, border-color .3s;
+  }
+  .stat:hover{ transform:translateY(-6px); border-color:var(--lime); }
+  .stat__num{
+    font-family:var(--font-display); font-weight:700; font-size:2.6rem;
+    background:linear-gradient(100deg, var(--lime), var(--cyan));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .stat__label{ display:block; margin-top:8px; color:var(--muted); font-size:0.9rem; font-family:var(--font-mono); }
 
-/* ══ SECTIONS ══ */
-section{padding:100px 6%;position:relative;overflow:hidden}
-.sec-label{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
-h2.sec-h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,4.5vw,52px);font-weight:800;letter-spacing:-1.5px;color:var(--dark);margin-bottom:52px;line-height:1.1}
-h2.sec-h2 span{color:var(--orange)}
+  /* ---------- skills / pillar ---------- */
+  .skills{ overflow:hidden; }
+  .skills__inner{
+    max-width:1300px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr;
+    gap:60px; align-items:center;
+  }
+  .skills__list{ margin-top:32px; display:flex; flex-direction:column; gap:14px; }
+  .skills__list li{
+    font-family:var(--font-mono); font-size:0.95rem; color:var(--muted);
+    display:flex; align-items:center; gap:12px;
+  }
+  .skills__list li::before{
+    content:''; width:8px; height:8px; border-radius:50%; background:var(--magenta); flex-shrink:0;
+  }
 
-/* ══ ABOUT ══ */
-.about{background:var(--dark);color:#fff}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.about .sec-label{color:var(--orange)}
-.about h2{color:#fff}
-.about-desc{font-size:16px;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:36px}
-.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.as-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px;text-align:center;transition:all .3s}
-.as-card:hover{background:rgba(255,107,43,.1);border-color:rgba(255,107,43,.3);transform:translateY(-4px)}
-.as-num{font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:800;color:var(--orange);line-height:1}
-.as-label{font-size:11px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1px;margin-top:6px}
-/* animated illustration right */
-.about-visual{position:relative;height:400px;display:flex;align-items:center;justify-content:center}
-.av-circle{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.06);animation:spin-slow linear infinite}
-.av-c1{width:300px;height:300px;animation-duration:20s}
-.av-c2{width:220px;height:220px;animation-duration:14s;animation-direction:reverse}
-.av-c3{width:140px;height:140px;animation-duration:8s}
-@keyframes spin-slow{to{transform:rotate(360deg)}}
-.av-dot{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--orange);top:-5px;left:50%;transform:translateX(-50%)}
-.av-center{width:90px;height:90px;background:linear-gradient(135deg,var(--orange),var(--orange2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;box-shadow:0 0 40px rgba(255,107,43,.4);animation:center-pulse 3s ease infinite}
-@keyframes center-pulse{0%,100%{box-shadow:0 0 40px rgba(255,107,43,.4)}50%{box-shadow:0 0 70px rgba(255,107,43,.7)}}
-.av-orbit-icon{position:absolute;font-size:20px;background:#fff;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+  .pillar-wrap{
+    position:relative; height:620px; display:flex; align-items:center; justify-content:center;
+    perspective:1400px;
+  }
+  .pillar-person{
+    position:absolute; bottom:18px; left:50%; transform:translateX(-50%);
+    z-index:1; display:flex; flex-direction:column; align-items:center;
+    width:120px; pointer-events:none;
+  }
+  .pillar-person svg{ width:84px; height:170px; }
+  .pillar-person__shadow{
+    width:120px; height:26px; margin-top:-10px; border-radius:50%;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.55), transparent 75%);
+    animation: shadow-pulse 6s ease-in-out infinite;
+  }
+  @keyframes shadow-pulse{
+    0%, 100%{ transform:scale(1); opacity:0.6; }
+    50%{ transform:scale(0.88); opacity:0.4; }
+  }
+  @media (prefers-reduced-motion: reduce){ .pillar-person__shadow{ animation:none; } }
+  @media (max-width: 980px){
+    .pillar-person{ bottom:6px; width:90px; }
+    .pillar-person svg{ width:64px; height:128px; }
+    .pillar-person__shadow{ width:90px; height:20px; }
+  }
+  .pillar{
+    position:relative; width:1px; height:1px; transform-style:preserve-3d;
+    transform: rotateX(-8deg) rotateY(0deg);
+    will-change: transform;
+  }
+  .pillar__core{
+    position:absolute; left:50%; top:-220px; width:6px; height:440px; transform:translateX(-50%);
+    background:linear-gradient(180deg, transparent, var(--lime), var(--cyan), var(--magenta), transparent);
+    border-radius:6px; filter:blur(1px); box-shadow:0 0 40px rgba(216,255,62,0.35);
+  }
+  .pillar__card{
+    position:absolute; width:210px; height:130px; left:-105px; top:-65px;
+    border-radius:18px; border:1px solid var(--border);
+    background:linear-gradient(155deg, rgba(255,255,255,0.07), rgba(255,255,255,0.015));
+    backdrop-filter:blur(8px);
+    display:flex; flex-direction:column; justify-content:space-between; padding:20px;
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(250px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  }
+  .pillar__card .num{ font-family:var(--font-mono); font-size:0.75rem; color:var(--cyan); letter-spacing:0.15em; }
+  .pillar__card .name{ font-family:var(--font-display); font-weight:600; font-size:1.15rem; }
 
-/* ══ SERVICES ══ */
-.services{background:var(--cream)}
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.svc-card{background:#fff;border-radius:20px;padding:32px;border:1px solid rgba(0,0,0,.06);transition:all .4s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;cursor:default}
-.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--orange2));transform:scaleX(0);transform-origin:left;transition:transform .4s}
-.svc-card:hover{transform:translateY(-8px);box-shadow:0 24px 56px rgba(0,0,0,.1);border-color:transparent}
-.svc-card:hover::before{transform:scaleX(1)}
-.svc-num{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:rgba(0,0,0,.15);letter-spacing:2px;margin-bottom:20px}
-.svc-icon{font-size:32px;margin-bottom:16px;display:block;transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
-.svc-card:hover .svc-icon{transform:scale(1.2) rotate(-8deg)}
-.svc-card h3{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:10px}
-.svc-card p{font-size:13.5px;color:var(--muted);line-height:1.7}
-.svc-arrow{position:absolute;bottom:24px;right:24px;width:32px;height:32px;background:var(--cream);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;opacity:0;transform:translateX(-6px);transition:all .3s}
-.svc-card:hover .svc-arrow{opacity:1;transform:none}
+  @media (max-width: 980px){
+    .skills__inner{ grid-template-columns:1fr; gap:30px; }
+    .pillar-wrap{ height:420px; order:-1; perspective:900px; }
+    .pillar__card{ width:160px; height:108px; left:-80px; top:-54px; padding:16px; transform: rotateY(calc(var(--i) * 45deg)) translateZ(170px); }
+    .pillar__core{ height:320px; top:-160px; }
+  }
 
-/* ══ SKILLS ══ */
-.skills{background:var(--dark2)}
-.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.skills .sec-label{color:var(--orange)}
-.skills h2{color:#fff}
-.sk-item{margin-bottom:22px}
-.sk-row{display:flex;justify-content:space-between;margin-bottom:9px}
-.sk-name{font-size:14px;font-weight:500;color:rgba(255,255,255,.85)}
-.sk-pct{font-size:12px;font-weight:700;color:var(--orange)}
-.sk-track{height:3px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden}
-.sk-bar{height:100%;background:linear-gradient(90deg,var(--orange),var(--orange2));border-radius:99px;width:0;transition:width 1.6s cubic-bezier(.4,0,.2,1)}
-.tools-label{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
-.tools-h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,3vw,40px);font-weight:800;color:#fff;letter-spacing:-1px;margin-bottom:32px}
-.tools-grid{display:flex;flex-wrap:wrap;gap:8px}
-.tool{padding:8px 15px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;font-size:12.5px;color:rgba(255,255,255,.6);transition:all .25s;cursor:default;display:inline-flex;align-items:center;gap:6px}
-.tool::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0}
-.tool:hover{background:rgba(255,107,43,.12);border-color:rgba(255,107,43,.3);color:#fff;transform:translateY(-3px)}
+  /* ---------- tools marquee ---------- */
+  .tools{ padding-left:0; padding-right:0; }
+  .tools__head{ padding:0 6vw; max-width:1100px; margin:0 auto; }
+  .marquee{
+    margin-top:60px; overflow:hidden; position:relative;
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .marquee__track{
+    display:flex; gap:16px; width:max-content;
+    animation: scroll-x 32s linear infinite;
+  }
+  .marquee:hover .marquee__track{ animation-play-state:paused; }
+  @keyframes scroll-x{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce){ .marquee__track{ animation:none; } }
 
-/* ══ EXPERIENCE ══ */
-.experience{background:var(--cream2)}
-.tl{position:relative;padding-left:0}
-.tl::before{content:'';position:absolute;left:160px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(0,0,0,.1) 8%,rgba(0,0,0,.1) 92%,transparent)}
-.tl-row{display:grid;grid-template-columns:160px 1fr;gap:0;padding:32px 0;border-bottom:1px solid rgba(0,0,0,.06);position:relative}
-.tl-row:last-child{border-bottom:none}
-.tl-node{position:absolute;left:154px;top:36px;width:13px;height:13px;border-radius:50%;border:2.5px solid var(--orange);background:var(--cream2);z-index:1;transition:all .4s}
-.tl-row:hover .tl-node{background:var(--orange);box-shadow:0 0 0 4px rgba(255,107,43,.15),0 0 16px rgba(255,107,43,.4)}
-.tl-date{font-size:12px;color:var(--muted);text-align:right;padding-right:32px;padding-top:4px}
-.tl-body{padding-left:36px}
-.tl-role{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:var(--dark);margin-bottom:2px}
-.tl-co{font-size:13px;color:var(--orange);font-weight:600;margin-bottom:10px}
-.tl-desc{font-size:13.5px;color:var(--muted);line-height:1.8;max-width:560px}
-.tl-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.chip{font-size:11px;padding:4px 10px;border-radius:6px;background:rgba(255,107,43,.08);color:var(--orange);font-weight:600;transition:all .2s}
-.chip:hover{background:var(--orange);color:#fff;transform:translateY(-2px)}
+  /* train cars */
+  .train-car{
+    flex-shrink:0; width:230px; border-radius:16px 16px 6px 6px;
+    border:1px solid var(--border); background:var(--surface);
+    display:flex; flex-direction:column; overflow:hidden; position:relative;
+    transition: transform .35s ease, border-color .35s;
+  }
+  .train-car:hover{ transform:translateY(-10px) rotate(-1.2deg); border-color:var(--cyan); }
+  .train-car::after{
+    content:''; position:absolute; top:58%; right:-17px; width:17px; height:6px;
+    background:var(--surface-2); border-radius:2px; z-index:1;
+  }
+  .marquee__track > .train-car:last-child::after{ display:none; }
+  .train-car__roof{ height:8px; width:100%; }
+  .train-car__body{ display:flex; gap:14px; align-items:flex-start; padding:24px 20px 34px; flex:1; }
+  .train-car__wheels{
+    position:absolute; bottom:8px; left:0; right:0;
+    display:flex; justify-content:space-around; padding:0 30px;
+  }
+  .train-car__wheels span{
+    width:14px; height:14px; border-radius:50%; background:var(--bg);
+    border:3px solid var(--muted); position:relative;
+  }
+  .train-car__wheels span::after{
+    content:''; position:absolute; inset:3px; border-radius:50%; background:var(--muted);
+  }
+  .marquee:not(:hover) .train-car__wheels span{ animation: wheel-spin 1s linear infinite; }
+  @keyframes wheel-spin{ to{ transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce){ .train-car__wheels span{ animation:none; } }
 
-/* ══ CONTACT ══ */
-.contact{background:var(--dark);color:#fff}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.contact .sec-label{color:var(--orange)}
-.contact h2{color:#fff;margin-bottom:16px}
-.contact-desc{font-size:16px;color:rgba(255,255,255,.55);line-height:1.85;margin-bottom:40px}
-.ct-links{display:flex;flex-direction:column;gap:12px}
-.ct-link{display:flex;align-items:center;gap:14px;padding:16px 20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;text-decoration:none;color:#fff;font-weight:500;font-size:14px;transition:all .3s}
-.ct-link:hover{background:rgba(255,107,43,.12);border-color:rgba(255,107,43,.35);transform:translateX(6px)}
-.ct-link-icon{width:40px;height:40px;border-radius:10px;background:rgba(255,107,43,.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.ct-link-text{font-size:11px;color:rgba(255,255,255,.4);margin-top:1px}
-/* contact visual */
-.contact-visual{position:relative;height:420px;display:flex;align-items:center;justify-content:center}
-.cv-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:28px;position:absolute;transition:all .3s}
-.cvc1{width:280px;top:20px;right:0;animation:cv-float1 4s ease-in-out infinite}
-.cvc2{width:260px;bottom:20px;left:0;animation:cv-float2 5s ease-in-out infinite}
-.cvc3{width:220px;top:40%;left:20%;animation:cv-float3 3.5s ease-in-out infinite}
-@keyframes cv-float1{0%,100%{transform:translateY(0) rotate(2deg)}50%{transform:translateY(-12px) rotate(0deg)}}
-@keyframes cv-float2{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(10px) rotate(0deg)}}
-@keyframes cv-float3{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.cvc-label{font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
-.cvc-val{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:#fff}
-.cvc-bar{height:4px;background:rgba(255,255,255,.1);border-radius:99px;margin-top:10px;overflow:hidden}
-.cvc-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--orange2));border-radius:99px}
+  .tool-card__icon{
+    width:48px; height:48px; border-radius:14px; display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-weight:700; font-size:1.1rem; color:#0a0a16; flex-shrink:0;
+  }
+  .tool-card__name{ font-family:var(--font-display); font-weight:600; font-size:1.1rem; display:block; }
+  .tool-card__tag{ font-family:var(--font-mono); font-size:0.76rem; color:var(--muted); display:block; margin-top:6px; }
 
-/* ══ FOOTER ══ */
-footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding:24px 6%;display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:rgba(255,255,255,.3)}
+  /* rail track under marquee */
+  .rail{
+    margin-top:-6px; height:16px; position:relative; border-radius:3px;
+    background:linear-gradient(180deg, var(--surface-2), var(--bg-soft));
+  }
+  .rail::before{
+    content:''; position:absolute; top:50%; left:0; right:0; height:2px; transform:translateY(-50%);
+    background-image: repeating-linear-gradient(90deg, var(--muted) 0 16px, transparent 16px 38px);
+    opacity:0.45;
+  }
 
-/* ══ REVEAL ══ */
-.rv{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
-.rv.on{opacity:1;transform:none}
-.rv-l{opacity:0;transform:translateX(-48px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
-.rv-l.on{opacity:1;transform:none}
-.rv-r{opacity:0;transform:translateX(48px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
-.rv-r.on{opacity:1;transform:none}
-.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
-.d4{transition-delay:.32s}.d5{transition-delay:.40s}.d6{transition-delay:.48s}
+  /* ---------- experience ---------- */
+  .experience__inner{ max-width:900px; margin:0 auto; }
+  .timeline{ margin-top:50px; display:flex; flex-direction:column; }
+  .timeline-item{
+    display:grid; grid-template-columns:140px 1fr; gap:32px; padding:34px 0;
+    border-top:1px solid var(--border); position:relative;
+    opacity:0; transform:scale(0.86) translateY(24px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .timeline-item.in-view{ opacity:1; transform:scale(1) translateY(0); }
+  .timeline-item.in-view:hover{ transform:scale(1.035); border-color:var(--cyan); z-index:1; }
+  .timeline-item:first-child{ border-top:1px solid var(--border); }
+  .timeline-item__period{ font-family:var(--font-mono); font-size:0.85rem; color:var(--cyan); }
+  .timeline-item__role{ font-family:var(--font-display); font-weight:600; font-size:1.3rem; }
+  .timeline-item__org{ color:var(--muted); margin-top:6px; font-size:0.95rem; }
+  .timeline-item__desc{ color:var(--muted); margin-top:14px; font-size:0.95rem; max-width:560px; }
+  @media (max-width:640px){ .timeline-item{ grid-template-columns:1fr; gap:10px; } }
 
-/* ══ RESPONSIVE ══ */
-@media(max-width:900px){
-  body{cursor:auto}#cur,#cur2{display:none}
-  .hero{grid-template-columns:1fr;padding:90px 5% 60px;gap:48px}
-  .hero-right{order:-1}
-  .float-card{display:none}
-  .about-grid,.contact-grid,.skills-grid{grid-template-columns:1fr;gap:48px}
-  .svc-grid{grid-template-columns:1fr}
-  .tl::before{left:0}.tl-row{grid-template-columns:1fr;gap:4px}
-  .tl-date{text-align:left;padding-right:0}.tl-body{padding-left:0}.tl-node{display:none}
-  .hero-stats{gap:20px}
-  section{padding:72px 5%}
-  .nav-links{display:none}
-}
-@media(prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important}
-  .rv,.rv-l,.rv-r{opacity:1;transform:none}
-  #loader{display:none}
-}
+  /* ---------- work ---------- */
+  .work__inner{ max-width:1200px; margin:0 auto; }
+  .work__grid{ margin-top:50px; display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:28px; }
+  .work-card{
+    border-radius:24px; padding:36px; border:1px solid var(--border);
+    background:linear-gradient(165deg, rgba(255,255,255,0.05), transparent);
+    position:relative; overflow:hidden; transition:transform .35s, border-color .35s;
+  }
+  .work-card:hover{ transform:translateY(-8px); border-color:var(--magenta); }
+  .work-card::after{
+    content:''; position:absolute; top:-60%; right:-30%; width:260px; height:260px; border-radius:50%;
+    background:radial-gradient(circle, rgba(63,227,255,0.18), transparent 70%);
+  }
+  .work-card__tag{ font-family:var(--font-mono); font-size:0.78rem; color:var(--lime); letter-spacing:0.15em; text-transform:uppercase; }
+  .work-card__title{ font-family:var(--font-display); font-weight:700; font-size:1.7rem; margin-top:14px; }
+  .work-card__desc{ color:var(--muted); margin-top:16px; font-size:0.98rem; }
+  .work-card__pills{ display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+  .pill{
+    font-family:var(--font-mono); font-size:0.75rem; padding:8px 14px; border-radius:999px;
+    border:1px solid var(--border); color:var(--muted);
+  }
+
+  /* ---------- contact ---------- */
+  .contact{ text-align:center; }
+  .contact__inner{ max-width:760px; margin:0 auto; }
+  .contact__title{
+    font-family:var(--font-display); font-weight:700; font-size:clamp(2.4rem,7vw,5rem);
+    line-height:1.05;
+  }
+  .contact__title span{
+    background:linear-gradient(100deg, var(--magenta), var(--lime));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .contact__sub{ margin-top:20px; color:var(--muted); font-size:1.05rem; }
+  .contact__links{ margin-top:44px; display:flex; justify-content:center; gap:18px; flex-wrap:wrap; }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:40px 6vw; text-align:center; font-family:var(--font-mono);
+    font-size:0.78rem; color:var(--muted); border-top:1px solid var(--border);
+  }
 </style>
 </head>
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-  <div class="ld-name">MZ<span>.</span></div>
-  <div class="ld-bar"><div class="ld-fill"></div></div>
-  <div class="ld-text">Loading Portfolio</div>
-</div>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
 
-<!-- CURSOR -->
-<div id="cur"></div><div id="cur2"></div>
-
-<!-- NAV -->
-<nav class="nav" id="nav">
-  <a href="#home" class="nav-logo">MZ</a>
-  <div class="nav-links">
-    <a href="#about" class="nav-link">About</a>
-    <a href="#services" class="nav-link">Services</a>
-    <a href="#skills" class="nav-link">Skills</a>
-    <a href="#experience" class="nav-link">Experience</a>
+<nav class="nav">
+  <a href="#top" class="nav__logo">MZ<span>.</span></a>
+  <div class="nav__links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#tools">Tools</a>
+    <a href="#experience">Experience</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
   </div>
-  <a href="#contact" class="nav-cta">Get in Touch →</a>
+  <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-blob"></div>
-  <div class="hero-left">
-    <div class="hero-badge"><span class="hero-badge-dot"></span>Available for Projects</div>
-    <h1 class="hero-h1">
-      <span class="h1-line">Hi, I'm</span>
-      <span class="h1-line">Muhammad</span>
-      <span class="h1-line"><span class="orange-word">Zohaib.</span></span>
-    </h1>
-    <div class="hero-role"><span id="tw"></span><span class="tc"></span></div>
-    <p class="hero-desc">I help businesses rank higher, get discovered by AI search engines, and turn organic traffic into real revenue. 4+ years of SEO strategies that move the needle.</p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn-primary">Let's Work Together <span class="btn-arr">→</span></a>
-      <a href="#experience" class="btn-ghost">View My Work</a>
-    </div>
-    <div class="hero-stats">
-      <div><div class="hs-num"><span class="cnt" data-t="4">0</span>+</div><div class="hs-label">Years Exp</div></div>
-      <div><div class="hs-num"><span class="cnt" data-t="15">0</span>+</div><div class="hs-label">Clients</div></div>
-      <div><div class="hs-num"><span class="cnt" data-t="3">0</span>x</div><div class="hs-label">Growth</div></div>
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="hero__bg"></div>
+
+  <div class="hero__floaters" id="floaters">
+    <div class="floater floater--ahrefs" data-depth="20"><span class="floater__icon">Ah</span>Ahrefs</div>
+    <div class="floater floater--moz" data-depth="35"><span class="floater__icon">M</span>Moz Pro</div>
+    <div class="floater floater--semrush" data-depth="15"><span class="floater__icon">SE</span>SEMrush</div>
+    <div class="floater floater--ga4" data-depth="30"><span class="floater__icon">A4</span>GA4</div>
+    <div class="floater floater--gtm" data-depth="25"><span class="floater__icon">GT</span>GTM</div>
+  </div>
+
+  <p class="hero__eyebrow">// Senior SEO Specialist · GEO &amp; AEO</p>
+  <h1 class="hero__title">Muhammad<br><span>Zohaib</span></h1>
+  <p class="hero__role">I take websites from <strong>page two</strong> to <strong>position one</strong> — across Google, Bing and the AI engines that are quietly becoming the new search bar.</p>
+
+  <div class="hero__cta">
+    <a href="#work" class="btn btn--primary">See the work</a>
+    <a href="#contact" class="btn btn--ghost">Let's talk</a>
+  </div>
+
+  <div class="hero__serp">
+    <div class="serp-badge">
+      <div class="serp-badge__face serp-badge__face--front">#1<small>SERP</small></div>
+      <div class="serp-badge__face serp-badge__face--back">↑ RANK</div>
     </div>
   </div>
-  <div class="hero-right">
-    <div class="hero-svg-wrap">
-      <!-- Animated SVG Desk Illustration -->
-      <svg viewBox="0 0 480 420" xmlns="http://www.w3.org/2000/svg">
-        <!-- rug -->
-        <rect x="60" y="310" width="360" height="90" rx="12" fill="#f4a830" opacity=".9"/>
-        <rect x="90" y="325" width="300" height="62" rx="8" fill="#fbbf24" opacity=".7"/>
-        <!-- desk legs -->
-        <rect x="100" y="240" width="14" height="80" rx="4" fill="#e5e7eb"/>
-        <rect x="366" y="240" width="14" height="80" rx="4" fill="#e5e7eb"/>
-        <!-- desk surface -->
-        <rect x="70" y="228" width="340" height="18" rx="6" fill="#fff" opacity=".95"/>
-        <!-- monitor stand -->
-        <rect x="224" y="175" width="12" height="55" rx="3" fill="#d1d5db"/>
-        <rect x="200" y="225" width="60" height="8" rx="3" fill="#d1d5db"/>
-        <!-- monitor -->
-        <rect x="150" y="90" width="180" height="130" rx="10" fill="#1e1e2e"/>
-        <rect x="158" y="98" width="164" height="114" rx="6" fill="#0f172a"/>
-        <!-- code lines on screen -->
-        <rect x="168" y="112" width="80" height="5" rx="2" fill="#7c3aed" opacity=".8"/>
-        <rect x="168" y="122" width="120" height="5" rx="2" fill="#ff6b2b" opacity=".8"/>
-        <rect x="168" y="132" width="60" height="5" rx="2" fill="#06b6d4" opacity=".8"/>
-        <rect x="178" y="142" width="100" height="5" rx="2" fill="#7c3aed" opacity=".6"/>
-        <rect x="178" y="152" width="75" height="5" rx="2" fill="#ff6b2b" opacity=".6"/>
-        <rect x="168" y="162" width="90" height="5" rx="2" fill="#06b6d4" opacity=".6"/>
-        <rect x="168" y="172" width="50" height="5" rx="2" fill="#7c3aed" opacity=".5"/>
-        <!-- keyboard -->
-        <rect x="165" y="238" width="130" height="24" rx="5" fill="#f3f4f6"/>
-        <rect x="170" y="242" width="120" height="16" rx="3" fill="#e5e7eb"/>
-        <!-- mouse -->
-        <rect x="308" y="238" width="28" height="22" rx="9" fill="#f3f4f6"/>
-        <rect x="321" y="238" width="1" height="12" rx="1" fill="#d1d5db"/>
-        <!-- plant pot -->
-        <ellipse cx="400" cy="247" rx="20" ry="8" fill="#d97706"/>
-        <rect x="382" y="225" width="36" height="24" rx="4" fill="#d97706"/>
-        <ellipse cx="400" cy="225" rx="18" ry="12" fill="#16a34a"/>
-        <ellipse cx="392" cy="218" rx="12" ry="10" fill="#15803d"/>
-        <ellipse cx="408" cy="216" rx="14" ry="11" fill="#16a34a"/>
-        <!-- notebook -->
-        <rect x="90" y="232" width="60" height="8" rx="2" fill="#fde68a"/>
-        <rect x="93" y="234" width="54" height="4" rx="1" fill="#fbbf24" opacity=".5"/>
-        <!-- notice board -->
-        <rect x="30" y="40" width="100" height="80" rx="6" fill="#92400e" opacity=".7"/>
-        <rect x="38" y="48" width="84" height="64" rx="4" fill="#d97706" opacity=".6"/>
-        <rect x="44" y="54" width="32" height="26" rx="3" fill="#fde68a" transform="rotate(-3 44 54)"/>
-        <rect x="82" y="58" width="30" height="24" rx="3" fill="#bfdbfe" transform="rotate(2 82 58)"/>
-        <rect x="50" y="86" width="28" height="20" rx="3" fill="#fca5a5" transform="rotate(-1 50 86)"/>
-        <!-- bookshelf items -->
-        <rect x="30" y="180" width="16" height="55" rx="3" fill="#7c3aed"/>
-        <rect x="48" y="188" width="14" height="47" rx="3" fill="#ff6b2b"/>
-        <rect x="64" y="184" width="16" height="51" rx="3" fill="#06b6d4"/>
-        <!-- animated cursor blink on screen -->
-        <rect x="250" y="172" width="6" height="12" rx="1" fill="#fff" opacity=".9">
-          <animate attributeName="opacity" values="0.9;0;0.9" dur="1s" repeatCount="indefinite"/>
-        </rect>
-        <!-- floating search icon -->
-        <g transform="translate(390,60)">
-          <rect width="52" height="52" rx="14" fill="#fff" filter="url(#shadow)"/>
-          <circle cx="22" cy="22" r="9" fill="none" stroke="#7c3aed" stroke-width="2.5"/>
-          <line x1="28" y1="28" x2="36" y2="36" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round"/>
-          <animateTransform attributeName="transform" type="translate" values="390,60;390,46;390,60" dur="3s" repeatCount="indefinite"/>
-        </g>
-        <!-- floating chart -->
-        <g transform="translate(20,160)">
-          <rect width="56" height="48" rx="12" fill="#fff" filter="url(#shadow)"/>
-          <rect x="8" y="30" width="8" height="12" rx="2" fill="#ff6b2b"/>
-          <rect x="20" y="22" width="8" height="20" rx="2" fill="#fbbf24"/>
-          <rect x="32" y="16" width="8" height="26" rx="2" fill="#7c3aed"/>
-          <rect x="44" y="24" width="8" height="18" rx="2" fill="#06b6d4"/>
-          <animateTransform attributeName="transform" type="translate" values="20,160;20,172;20,160" dur="4s" repeatCount="indefinite"/>
-        </g>
-        <defs>
-          <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-            <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(0,0,0,.15)"/>
-          </filter>
-        </defs>
-      </svg>
-      <!-- floating cards -->
-      <div class="float-card fc1"><div><div class="fc-icon">📈</div></div><div><div class="fc-val">3x Growth</div><div class="fc-sub">Avg Organic Traffic</div></div></div>
-      <div class="float-card fc2"><div><div class="fc-icon">🤖</div></div><div><div class="fc-val">AI-Ready</div><div class="fc-sub">GEO / AEO Strategy</div></div></div>
-      <div class="float-card fc3"><div><div class="fc-icon">⭐</div></div><div><div class="fc-val">4+ Years</div><div class="fc-sub">SEO Experience</div></div></div>
+
+  <div class="hero__scroll"><span></span>Scroll</div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="about__inner reveal">
+    <p class="section-eyebrow">Position 01 / 06</p>
+    <h2 class="section-title">A technical brain<br>with a content heart.</h2>
+    <p class="about__text">
+      I'm a <strong>Senior SEO Specialist</strong> with a Software Engineering background (BSc, NUML Lahore) —
+      which means I'm just as comfortable untangling sitemap errors in Search Console as I am
+      mapping a keyword cluster or writing GEO guidelines a content team can actually follow.
+      Currently leading SEO &amp; digital growth for two brands at <strong>AdamIS Tech</strong>,
+      blending technical SEO, on-page optimization, link building and the newer discipline of
+      <strong>Generative &amp; Answer Engine Optimization</strong> — getting brands found inside
+      ChatGPT, Gemini and the AI Overviews, not just the blue links.
+    </p>
+
+    <div class="about__stats">
+      <div class="stat"><span class="stat__num" data-count="2">0</span><span class="stat__label">Brands managed end-to-end</span></div>
+      <div class="stat"><span class="stat__num" data-count="3">0</span><span class="stat__label">Years in SEO &amp; content</span></div>
+      <div class="stat"><span class="stat__num" data-count="5">0</span><span class="stat__label">Core SEO tools, daily</span></div>
+      <div class="stat"><span class="stat__num" data-count="100">0</span><span class="stat__label">% reports, audits &amp; roadmaps in-house</span></div>
     </div>
-  </div>
-  <div class="scroll-hint">
-    <div class="mouse"><div class="mouse-dot"></div></div>
-    <span>Scroll</span>
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="mq">
-  <div class="mq-track">
-    <span class="mq-item">Technical SEO<span class="mq-sep">✦</span></span><span class="mq-item">GEO / AEO<span class="mq-sep">✦</span></span><span class="mq-item">Link Building<span class="mq-sep">✦</span></span><span class="mq-item">Content Strategy<span class="mq-sep">✦</span></span><span class="mq-item">Local SEO & GMB<span class="mq-sep">✦</span></span><span class="mq-item">GA4 Analytics<span class="mq-sep">✦</span></span><span class="mq-item">Core Web Vitals<span class="mq-sep">✦</span></span><span class="mq-item">E-E-A-T Optimization<span class="mq-sep">✦</span></span>
-    <span class="mq-item">Technical SEO<span class="mq-sep">✦</span></span><span class="mq-item">GEO / AEO<span class="mq-sep">✦</span></span><span class="mq-item">Link Building<span class="mq-sep">✦</span></span><span class="mq-item">Content Strategy<span class="mq-sep">✦</span></span><span class="mq-item">Local SEO & GMB<span class="mq-sep">✦</span></span><span class="mq-item">GA4 Analytics<span class="mq-sep">✦</span></span><span class="mq-item">Core Web Vitals<span class="mq-sep">✦</span></span><span class="mq-item">E-E-A-T Optimization<span class="mq-sep">✦</span></span>
-  </div>
-</div>
+<!-- ================= SKILLS (PILLAR) ================= -->
+<section id="skills">
+  <div class="skills__inner">
+    <div class="reveal">
+      <p class="section-eyebrow">Position 02 / 06</p>
+      <h2 class="section-title">Skills that climb<br>the rankings.</h2>
+      <p class="section-sub">Eight disciplines, one pillar — keep scrolling and watch it turn.</p>
+      <ul class="skills__list">
+        <li>Technical SEO &amp; site audits</li>
+        <li>GEO / AEO strategy for AI search</li>
+        <li>Keyword research &amp; mapping</li>
+        <li>On-page &amp; content optimization</li>
+        <li>Link building &amp; outreach</li>
+        <li>Analytics, GTM &amp; reporting</li>
+        <li>WordPress / RankMath setup</li>
+        <li>Local SEO &amp; Google Business Profile</li>
+      </ul>
+    </div>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="about-grid">
-    <div class="rv-l">
-      <div class="sec-label">About Me</div>
-      <h2 class="sec-h2">I turn search into <span>growth.</span></h2>
-      <p class="about-desc">With 4+ years of hands-on SEO experience across agencies and global clients, I build strategies that go beyond rankings — they drive real business results. From technical foundations to AI-optimized content, I cover every layer of modern search.</p>
-      <div class="about-stats">
-        <div class="as-card rv d1"><div class="as-num"><span class="cnt" data-t="4">0</span>+</div><div class="as-label">Years Exp</div></div>
-        <div class="as-card rv d2"><div class="as-num"><span class="cnt" data-t="15">0</span>+</div><div class="as-label">Clients</div></div>
-        <div class="as-card rv d3"><div class="as-num"><span class="cnt" data-t="3">0</span>x</div><div class="as-label">Growth</div></div>
+    <div class="pillar-wrap reveal">
+      <div class="pillar-person">
+        <svg viewBox="0 0 100 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="personGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="var(--cyan)"/>
+              <stop offset="100%" stop-color="var(--magenta)"/>
+            </linearGradient>
+          </defs>
+          <!-- head tilted back, looking up -->
+          <g transform="rotate(-18 50 26)">
+            <ellipse cx="50" cy="24" rx="15" ry="16" fill="url(#personGrad)"/>
+          </g>
+          <!-- torso -->
+          <path d="M34 50 Q50 40 66 50 L70 118 Q50 128 30 118 Z" fill="url(#personGrad)" opacity="0.92"/>
+          <!-- arms slightly raised -->
+          <path d="M34 56 Q16 70 14 96" stroke="url(#personGrad)" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.85"/>
+          <path d="M66 56 Q84 70 86 96" stroke="url(#personGrad)" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.85"/>
+          <!-- legs -->
+          <path d="M40 118 L34 172" stroke="url(#personGrad)" stroke-width="13" fill="none" stroke-linecap="round" opacity="0.92"/>
+          <path d="M60 118 L66 172" stroke="url(#personGrad)" stroke-width="13" fill="none" stroke-linecap="round" opacity="0.92"/>
+        </svg>
+        <div class="pillar-person__shadow"></div>
       </div>
-    </div>
-    <div class="about-visual rv-r">
-      <div class="av-circle av-c1"><div class="av-dot"></div></div>
-      <div class="av-circle av-c2"><div class="av-dot" style="background:#7c3aed"></div></div>
-      <div class="av-circle av-c3"><div class="av-dot" style="background:#06d6a0"></div></div>
-      <div class="av-center">🔍</div>
-      <div class="av-orbit-icon" style="top:20px;left:50%;transform:translateX(-50%)">🤖</div>
-      <div class="av-orbit-icon" style="bottom:20px;left:50%;transform:translateX(-50%)">📊</div>
-      <div class="av-orbit-icon" style="left:20px;top:50%;transform:translateY(-50%)">🔗</div>
-      <div class="av-orbit-icon" style="right:20px;top:50%;transform:translateY(-50%)">📍</div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="sec-label rv">What I Do</div>
-  <h2 class="sec-h2 rv d1">Services I <span>Specialize</span> In</h2>
-  <div class="svc-grid">
-    <div class="svc-card rv d1"><div class="svc-num">01</div><span class="svc-icon">🔍</span><h3>Technical SEO</h3><p>Full site audits, Core Web Vitals, schema markup, crawl optimization, and indexing architecture — the foundation every successful SEO campaign needs.</p><div class="svc-arrow">→</div></div>
-    <div class="svc-card rv d2"><div class="svc-num">02</div><span class="svc-icon">🤖</span><h3>GEO / AEO Strategy</h3><p>Optimizing content to appear in ChatGPT, Gemini, Perplexity, and Google AI Overviews — the future of search is here.</p><div class="svc-arrow">→</div></div>
-    <div class="svc-card rv d3"><div class="svc-num">03</div><span class="svc-icon">📝</span><h3>Content Strategy</h3><p>Keyword mapping, topical clusters, content gap analysis, E-E-A-T optimization, and editorial guidelines that drive authority.</p><div class="svc-arrow">→</div></div>
-    <div class="svc-card rv d4"><div class="svc-num">04</div><span class="svc-icon">📍</span><h3>Local SEO & GMB</h3><p>Google Business Profile optimization, local citation building, and geo-targeted keyword strategies for US markets.</p><div class="svc-arrow">→</div></div>
-    <div class="svc-card rv d5"><div class="svc-num">05</div><span class="svc-icon">🔗</span><h3>Link Building</h3><p>Authority backlinks via digital PR, guest posting, niche citations, and high-DA profile campaigns.</p><div class="svc-arrow">→</div></div>
-    <div class="svc-card rv d6"><div class="svc-num">06</div><span class="svc-icon">📊</span><h3>SEO Analytics</h3><p>Custom GA4 & GSC dashboards, monthly performance reports, and actionable insights for stakeholders.</p><div class="svc-arrow">→</div></div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section class="skills" id="skills">
-  <div class="skills-grid">
-    <div>
-      <div class="sec-label rv">Expertise</div>
-      <h2 class="sec-h2 rv d1">Core <span>Skills</span></h2>
-      <div id="skWrap">
-        <div class="sk-item rv d1"><div class="sk-row"><span class="sk-name">Technical SEO</span><span class="sk-pct">95%</span></div><div class="sk-track"><div class="sk-bar" data-w="95"></div></div></div>
-        <div class="sk-item rv d2"><div class="sk-row"><span class="sk-name">On-Page & Content SEO</span><span class="sk-pct">92%</span></div><div class="sk-track"><div class="sk-bar" data-w="92"></div></div></div>
-        <div class="sk-item rv d3"><div class="sk-row"><span class="sk-name">GEO / AEO — AI Search</span><span class="sk-pct">88%</span></div><div class="sk-track"><div class="sk-bar" data-w="88"></div></div></div>
-        <div class="sk-item rv d4"><div class="sk-row"><span class="sk-name">Link Building & Off-Page</span><span class="sk-pct">85%</span></div><div class="sk-track"><div class="sk-bar" data-w="85"></div></div></div>
-        <div class="sk-item rv d5"><div class="sk-row"><span class="sk-name">Local SEO & GMB</span><span class="sk-pct">90%</span></div><div class="sk-track"><div class="sk-bar" data-w="90"></div></div></div>
-        <div class="sk-item rv d6"><div class="sk-row"><span class="sk-name">Analytics & Reporting</span><span class="sk-pct">87%</span></div><div class="sk-track"><div class="sk-bar" data-w="87"></div></div></div>
-      </div>
-    </div>
-    <div>
-      <div class="tools-label rv">Toolbox</div>
-      <div class="tools-h2 rv d1">Tools I Use <span style="color:var(--orange)">Daily</span></div>
-      <div class="tools-grid rv d2">
-        <span class="tool">Semrush</span><span class="tool">Ahrefs</span><span class="tool">Search Console</span><span class="tool">GA4</span><span class="tool">Screaming Frog</span><span class="tool">RankMath</span><span class="tool">Seobility</span><span class="tool">Tag Manager</span><span class="tool">Yoast SEO</span><span class="tool">Moz</span><span class="tool">WordPress</span><span class="tool">Shopify</span><span class="tool">Figma</span><span class="tool">Notion</span><span class="tool">ChatGPT</span><span class="tool">Canva</span>
+      <div class="pillar" id="pillar">
+        <div class="pillar__core"></div>
+        <div class="pillar__card" style="--i:0"><span class="num">01</span><span class="name">Technical SEO</span></div>
+        <div class="pillar__card" style="--i:1"><span class="num">02</span><span class="name">GEO / AEO Strategy</span></div>
+        <div class="pillar__card" style="--i:2"><span class="num">03</span><span class="name">Keyword Mapping</span></div>
+        <div class="pillar__card" style="--i:3"><span class="num">04</span><span class="name">On-Page SEO</span></div>
+        <div class="pillar__card" style="--i:4"><span class="num">05</span><span class="name">Link Building</span></div>
+        <div class="pillar__card" style="--i:5"><span class="num">06</span><span class="name">GA4 &amp; GTM Reporting</span></div>
+        <div class="pillar__card" style="--i:6"><span class="num">07</span><span class="name">RankMath / WP</span></div>
+        <div class="pillar__card" style="--i:7"><span class="num">08</span><span class="name">Local SEO &amp; GMB</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section class="experience" id="experience">
-  <div class="sec-label rv">Career</div>
-  <h2 class="sec-h2 rv d1">Work <span>Experience</span></h2>
-  <div class="tl">
-    <div class="tl-row rv d1"><div class="tl-node"></div><div class="tl-date">2024 — Present</div><div class="tl-body"><div class="tl-role">Senior SEO Specialist</div><div class="tl-co">AdamIS Tech · The Design Log, Woodland Hills CA</div><div class="tl-desc">Leading full-spectrum SEO and digital marketing for two brands. Technical audits, GEO/AEO strategy, keyword mapping, RankMath & GA4 setup, GMB management, and US-market backlink campaigns.</div><div class="tl-tags"><span class="chip">Technical SEO</span><span class="chip">GEO/AEO</span><span class="chip">GMB</span><span class="chip">RankMath</span><span class="chip">GA4</span><span class="chip">Link Building</span></div></div></div>
-    <div class="tl-row rv d2"><div class="tl-node"></div><div class="tl-date">2023 — 2024</div><div class="tl-body"><div class="tl-role">SEO Specialist</div><div class="tl-co">Links Optimize</div><div class="tl-desc">On-page and off-page SEO for international clients — keyword research, content optimization, backlink outreach, and monthly performance reporting.</div><div class="tl-tags"><span class="chip">On-Page SEO</span><span class="chip">Backlinks</span><span class="chip">Reporting</span></div></div></div>
-    <div class="tl-row rv d3"><div class="tl-node"></div><div class="tl-date">2022 — 2023</div><div class="tl-body"><div class="tl-role">SEO & Content Strategist</div><div class="tl-co">Enzipe</div><div class="tl-desc">Content strategies and SEO frameworks for SaaS and ecommerce clients. Competitor analysis and topical cluster planning.</div><div class="tl-tags"><span class="chip">Content Strategy</span><span class="chip">Topical Clusters</span><span class="chip">SaaS SEO</span></div></div></div>
-    <div class="tl-row rv d4"><div class="tl-node"></div><div class="tl-date">2021 — 2022</div><div class="tl-body"><div class="tl-role">SEO Executive</div><div class="tl-co">Omnific Developers</div><div class="tl-desc">WordPress SEO, local citations, and technical audits for SMBs in Pakistan and the UK.</div><div class="tl-tags"><span class="chip">WordPress SEO</span><span class="chip">Local Citations</span></div></div></div>
-    <div class="tl-row rv d5"><div class="tl-node"></div><div class="tl-date">Education</div><div class="tl-body"><div class="tl-role">BSc Software Engineering</div><div class="tl-co">NUML University, Lahore</div><div class="tl-desc">Strong technical foundation complementing every SEO strategy — from site architecture to data analysis.</div><div class="tl-tags"><span class="chip">Software Engineering</span><span class="chip">Web Development</span></div></div></div>
+<!-- ================= TOOLS ================= -->
+<section id="tools">
+  <div class="tools__head reveal">
+    <p class="section-eyebrow">Position 03 / 06</p>
+    <h2 class="section-title">My everyday toolbox.</h2>
+    <p class="section-sub">The dashboards I check before I check my email.</p>
+  </div>
+
+  <div class="marquee">
+    <div class="marquee__track" id="marqueeTrack">
+      <div class="train-car"><div class="train-car__roof" style="background:var(--orange);"></div><div class="train-car__body"><span class="tool-card__icon" style="background:var(--orange);">Ah</span><div><span class="tool-card__name">Ahrefs</span><span class="tool-card__tag">Backlinks · keyword data · audits</span></div></div><div class="train-car__wheels"><span></span><span></span></div></div>
+      <div class="train-car"><div class="train-car__roof" style="background:var(--cyan);"></div><div class="train-car__body"><span class="tool-card__icon" style="background:var(--cyan);">M</span><div><span class="tool-card__name">Moz Pro</span><span class="tool-card__tag">Domain authority · rank tracking</span></div></div><div class="train-car__wheels"><span></span><span></span></div></div>
+      <div class="train-car"><div class="train-car__roof" style="background:var(--magenta);"></div><div class="train-car__body"><span class="tool-card__icon" style="background:var(--magenta);">SE</span><div><span class="tool-card__name">SEMrush</span><span class="tool-card__tag">Competitor &amp; SERP research</span></div></div><div class="train-car__wheels"><span></span><span></span></div></div>
+      <div class="train-car"><div class="train-car__roof" style="background:var(--lime);"></div><div class="train-car__body"><span class="tool-card__icon" style="background:var(--lime); color:#0a0a16;">A4</span><div><span class="tool-card__name">Google Analytics 4</span><span class="tool-card__tag">Traffic &amp; behaviour insights</span></div></div><div class="train-car__wheels"><span></span><span></span></div></div>
+      <div class="train-car"><div class="train-car__roof" style="background:#bda7ff;"></div><div class="train-car__body"><span class="tool-card__icon" style="background:#bda7ff;">GT</span><div><span class="tool-card__name">Google Tag Manager</span><span class="tool-card__tag">Event &amp; conversion tracking</span></div></div><div class="train-car__wheels"><span></span><span></span></div></div>
+      <!-- duplicate set for seamless loop -->
+      <div class="train-car"><div class="train-car__roof" style="background:var(--orange);"></div><div class="train-car__body"><span class="tool-card__icon" style="background:var(--orange);">Ah</span><div><span class="tool-card__name">Ahrefs</span><span class="tool-card__tag">Backlinks · keyword data · audits</span></div></div><div class="train-car__wheels"><span></span><span></span></div></div>
+      <div class="train-car"><div class="train-car__roof" style="background:var(--cyan);"></div><div class="train-car__body"><span class="tool-card__icon" style="background:var(--cyan);">M</span><div><span class="tool-card__name">Moz Pro</span><span class="tool-card__tag">Domain authority · rank tracking</span></div></div><div class="train-car__wheels"><span></span><span></span></div></div>
+      <div class="train-car"><div class="train-car__roof" style="background:var(--magenta);"></div><div class="train-car__body"><span class="tool-card__icon" style="background:var(--magenta);">SE</span><div><span class="tool-card__name">SEMrush</span><span class="tool-card__tag">Competitor &amp; SERP research</span></div></div><div class="train-car__wheels"><span></span><span></span></div></div>
+      <div class="train-car"><div class="train-car__roof" style="background:var(--lime);"></div><div class="train-car__body"><span class="tool-card__icon" style="background:var(--lime); color:#0a0a16;">A4</span><div><span class="tool-card__name">Google Analytics 4</span><span class="tool-card__tag">Traffic &amp; behaviour insights</span></div></div><div class="train-car__wheels"><span></span><span></span></div></div>
+      <div class="train-car"><div class="train-car__roof" style="background:#bda7ff;"></div><div class="train-car__body"><span class="tool-card__icon" style="background:#bda7ff;">GT</span><div><span class="tool-card__name">Google Tag Manager</span><span class="tool-card__tag">Event &amp; conversion tracking</span></div></div><div class="train-car__wheels"><span></span><span></span></div></div>
+    </div>
+  </div>
+  <div class="rail"></div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+  <div class="experience__inner">
+    <div class="reveal">
+      <p class="section-eyebrow">Position 04 / 06</p>
+      <h2 class="section-title">Where I've worked.</h2>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-item__period">Current</div>
+        </div>
+        <div>
+          <div class="timeline-item__role">Senior SEO Specialist</div>
+          <div class="timeline-item__org">AdamIS Tech</div>
+          <p class="timeline-item__desc">Owning SEO &amp; digital growth for AdamIS Tech and The Design Log — technical audits, GEO/AEO strategy, content optimization, link building and reporting for both Pakistani and US markets.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-item__period">Earlier</div>
+        </div>
+        <div>
+          <div class="timeline-item__role">SEO &amp; Content Specialist</div>
+          <div class="timeline-item__org">Enzipe / Links Optimize</div>
+          <p class="timeline-item__desc">Worked across SEO and WordPress-based content roles, building a foundation in on-page optimization, keyword research and technical fundamentals.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-item__period">Previous</div>
+        </div>
+        <div>
+          <div class="timeline-item__role">SEO Executive</div>
+          <div class="timeline-item__org">Omnific Developers</div>
+          <p class="timeline-item__desc">Started out bridging web development and SEO — early exposure to site structure, crawlability and the technical side of search.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="contact-grid">
-    <div class="rv-l">
-      <div class="sec-label">Let's Connect</div>
-      <h2 class="sec-h2">Want to <span>Grow</span> Your Search Presence?</h2>
-      <p class="contact-desc">Whether it's a technical SEO audit, GEO/AEO strategy, or an ongoing retainer — I'd love to hear about your goals. Let's make your brand impossible to ignore online.</p>
-      <div class="ct-links">
-        <a href="mailto:mr.zohabzahid@email.com" class="ct-link"><div class="ct-link-icon">📧</div><div><div>Email Me</div><div class="ct-link-text">mr.zohabzahid@email.com</div></div></a>
-        <a href="https://www.linkedin.com/in/zohaib-seo-specialist/" target="_blank" class="ct-link"><div class="ct-link-icon">💼</div><div><div>LinkedIn</div><div class="ct-link-text">https://www.linkedin.com/in/zohaib-seo-specialist/</div></div></a>
-        <a href="https://wa.me/923407237828" target="_blank" class="ct-link"><div class="ct-link-icon">💬</div><div><div>WhatsApp</div><div class="ct-link-text">Quick chat — fastest response</div></div></a>
+<!-- ================= WORK ================= -->
+<section id="work">
+  <div class="work__inner">
+    <div class="reveal">
+      <p class="section-eyebrow">Position 05 / 06</p>
+      <h2 class="section-title">Recent wins.</h2>
+    </div>
+
+    <div class="work__grid reveal">
+      <div class="work-card">
+        <span class="work-card__tag">Digital Agency · USA</span>
+        <h3 class="work-card__title">The Design Log</h3>
+        <p class="work-card__desc">Full digital presence overhaul — fixed sitewide keyword cannibalization with a complete keyword map, rebuilt the on-page SEO on RankMath, repaired sitemap &amp; redirect issues in GSC, and ran multi-round QA audits with detailed defect logs.</p>
+        <div class="work-card__pills">
+          <span class="pill">Technical SEO</span>
+          <span class="pill">RankMath</span>
+          <span class="pill">QA Audits</span>
+          <span class="pill">Keyword Mapping</span>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <span class="work-card__tag">In-House · PK / USA</span>
+        <h3 class="work-card__title">AdamIS Tech</h3>
+        <p class="work-card__desc">Built out a GEO/AEO strategy from the ground up — getting the brand surfaced inside ChatGPT and Google Gemini results within the first weeks, alongside GMB content strategy and local SEO for the Pakistan market.</p>
+        <div class="work-card__pills">
+          <span class="pill">GEO / AEO</span>
+          <span class="pill">Local SEO</span>
+          <span class="pill">GMB Strategy</span>
+          <span class="pill">Reporting</span>
+        </div>
       </div>
     </div>
-    <div class="contact-visual rv-r">
-      <div class="cv-card cvc1"><div class="cvc-label">Organic Traffic</div><div class="cvc-val">+312%</div><div class="cvc-bar"><div class="cvc-fill" style="width:85%"></div></div></div>
-      <div class="cv-card cvc2"><div class="cvc-label">Keyword Rankings</div><div class="cvc-val">Page 1</div><div class="cvc-bar"><div class="cvc-fill" style="width:92%"></div></div></div>
-      <div class="cv-card cvc3"><div class="cvc-label">AI Visibility</div><div class="cvc-val">GEO Ready ✓</div><div class="cvc-bar"><div class="cvc-fill" style="width:78%"></div></div></div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="contact__inner reveal">
+    <p class="section-eyebrow" style="justify-content:center;">Position 06 / 06</p>
+    <h2 class="contact__title">Let's get you to <span>#1</span>.</h2>
+    <p class="contact__sub">Open to new SEO &amp; GEO projects — drop a message and let's talk strategy.</p>
+    <div class="contact__links">
+      <a href="mailto:youremail@example.com" class="btn btn--primary">Email Me</a>
+      <a href="#" class="btn btn--ghost">LinkedIn</a>
+      <a href="#" class="btn btn--ghost">Fiverr / Upwork</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <span>© 2025 Muhammad Zohaib — Senior SEO Specialist</span>
-  <span>Lahore, Pakistan</span>
+  © <span id="year"></span> Muhammad Zohaib — Built with strategy, shipped with style.
 </footer>
 
 <script>
-// LOADER
-setTimeout(()=>{
-  document.getElementById('loader').classList.add('gone');
-},1600);
+  // ---- mobile nav ----
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-// CURSOR
-const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'},{passive:true});
-(function loop(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;cur2.style.left=rx+'px';cur2.style.top=ry+'px';requestAnimationFrame(loop)})();
-document.querySelectorAll('a,button,.svc-card,.tool,.chip,.as-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('hl'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('hl'));
-});
+  // ---- footer year ----
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-// NAV SCROLL
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60),{passive:true});
-
-// TYPEWRITER
-const phrases=['Senior SEO Specialist','GEO / AEO Strategist','Technical SEO Expert','Digital Growth Partner','AI Search Optimizer'];
-const tw=document.getElementById('tw');
-let pi=0,ci=0,del=false;
-function type(){
-  const p=phrases[pi];
-  if(!del){ci++;tw.textContent=p.slice(0,ci);if(ci===p.length){del=true;setTimeout(type,2400);return}}
-  else{ci--;tw.textContent=p.slice(0,ci);if(ci===0){del=false;pi=(pi+1)%phrases.length}}
-  setTimeout(type,del?38:78);
-}
-setTimeout(type,1800);
-
-// SCROLL REVEAL
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}})},{threshold:.1});
-document.querySelectorAll('.rv,.rv-l,.rv-r,.tl-row').forEach(el=>obs.observe(el));
-
-// SKILL BARS
-const bars=document.querySelectorAll('.sk-bar');
-const skObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){bars.forEach((b,i)=>setTimeout(()=>b.style.width=b.dataset.w+'%',i*140));skObs.disconnect()}})},{threshold:.3});
-const sw=document.getElementById('skWrap');if(sw)skObs.observe(sw);
-
-// COUNT UP
-const ctObs=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,t=+el.dataset.t,dur=1800,s=performance.now();(function step(n){const p=Math.min((n-s)/dur,1),ease=1-Math.pow(1-p,4);el.textContent=Math.floor(ease*t);if(p<1)requestAnimationFrame(step);else el.textContent=t})(performance.now());ctObs.unobserve(el)})},{threshold:.6});
-document.querySelectorAll('.cnt').forEach(c=>ctObs.observe(c));
-
-// SERVICE CARD TILT
-document.querySelectorAll('.svc-card').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const r=card.getBoundingClientRect();
-    const x=((e.clientX-r.left)/r.width-.5)*12;
-    const y=((e.clientY-r.top)/r.height-.5)*-12;
-    card.style.transform=`translateY(-8px) rotateX(${y}deg) rotateY(${x}deg)`;
-    card.style.transformStyle='preserve-3d';
+  // ---- cursor glow ----
+  const glow = document.getElementById('cursorGlow');
+  window.addEventListener('mousemove', e => {
+    glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%,-50%)`;
   });
-  card.addEventListener('mouseleave',()=>card.style.transform='');
-});
+
+  // ---- floating icon parallax ----
+  const floaters = document.querySelectorAll('.floater');
+  window.addEventListener('mousemove', e => {
+    const x = (e.clientX / window.innerWidth - 0.5);
+    const y = (e.clientY / window.innerHeight - 0.5);
+    floaters.forEach(f => {
+      const depth = f.dataset.depth || 20;
+      f.style.transform = `translate(${x * depth}px, ${y * depth}px)`;
+    });
+  });
+
+  // ---- reveal on scroll ----
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('in-view');
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // ---- timeline items: staggered zoom-in ----
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  const timelineIO = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('in-view');
+    });
+  }, { threshold: 0.2 });
+  timelineItems.forEach(el => timelineIO.observe(el));
+
+  // ---- animated counters ----
+  const counters = document.querySelectorAll('.stat__num');
+  const counterIO = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.count, 10);
+      let cur = 0;
+      const step = Math.max(1, Math.ceil(target / 40));
+      const tick = () => {
+        cur += step;
+        if (cur >= target) { el.textContent = target; return; }
+        el.textContent = cur;
+        requestAnimationFrame(tick);
+      };
+      tick();
+      counterIO.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(el => counterIO.observe(el));
+
+  // ---- rotating skills pillar tied to page scroll ----
+  const pillar = document.getElementById('pillar');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const angle = window.scrollY * 0.12;
+      pillar.style.transform = `rotateX(-8deg) rotateY(${angle}deg)`;
+      ticking = false;
+    });
+  });
 </script>
+
 </body>
 </html>
